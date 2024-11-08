@@ -47,25 +47,25 @@
 			</button>
 			<transition name="tu-select">
 				<div v-if="activeOptions" class="tu-select__options" ref="options" :style="{
-					['--tu-color']: color ? getColor(color) : ''
-				}" :class="[
-	{
-		isColorDark: isColorDark
-	},
-	// colors
-	{
-		[`tu-component--${color}`]: !color
-	},
-	`tu-select__options--state-${state}`
-]" @mouseleave="() => {
-	targetSelect = false;
-	targetSelectInput = false;
-}
-	" @mouseenter="() => {
-		targetSelect = true;
-		targetSelectInput = true;
-	}
-		">
+					['--tu-color']: color ? getColor(color) : ''}" 
+					:class="[
+						{
+							isColorDark: isColorDark
+						},
+						// colors
+						{
+							[`tu-component--${color}`]: !color
+						},
+						`tu-select__options--state-${state}`
+					]" @mouseleave="() => {
+						targetSelect = false;
+						targetSelectInput = false;
+					}
+						" @mouseenter="() => {
+							targetSelect = true;
+							targetSelectInput = true;
+						}
+							">
 					<div class="tu-select__options__content" ref="content">
 						<div v-if="notData" class="tu-select__options__content__not-data">
 							<slot v-if="$slots.notData" name="notData" />
@@ -530,7 +530,7 @@ export default defineComponent({
 				// blur: this.blur,
 				input: (evt: any) => {
 					textFilter.value = evt.target.value;
-					if (props.dynamicFilter) 
+					if (props.dynamicFilter)
 						context.emit("filterUpdated", textFilter.value);
 				}
 			};
